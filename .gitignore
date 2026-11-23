@@ -1,0 +1,19 @@
+# Python virtual environment (uv rebuilds it with `uv sync`)
+.venv/
+
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+
+# Secrets: API keys
+.env
+
+# Personal data (profile, resumes) and runtime data (SQLite, Chroma).
+# The leading / means "only the top-level profile folder", so the fake
+# one in tests/fixtures/profile/ is still tracked.
+/profile/
+data/

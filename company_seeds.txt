@@ -1,0 +1,125 @@
+# Starter candidates for `uv run jobs-search discover`.
+#
+# Each line is "<board> <slug>". These are GUESSES: discovery checks every one
+# against the real API and keeps only boards that answer, so a wrong guess
+# just gets dropped. Common Crawl adds many more when it's answering.
+# You don't need to edit this file; add a line only if you want a company
+# that discovery keeps missing.
+
+# --- the three we started with ---
+greenhouse gitlab
+lever spotify
+ashby ramp
+
+# --- Twin Cities companies (guesses) ---
+greenhouse sezzle
+greenhouse jamf
+greenhouse arcticwolf
+greenhouse calabrio
+greenhouse code42
+greenhouse bswift
+lever sezzle
+lever jamf
+ashby sezzle
+
+# --- data, analytics and ML ---
+greenhouse databricks
+greenhouse datadog
+greenhouse elastic
+greenhouse mongodb
+greenhouse fivetran
+greenhouse dbtlabsinc
+greenhouse amplitude
+greenhouse mixpanel
+greenhouse airtable
+greenhouse scaleai
+greenhouse anthropic
+greenhouse hex
+greenhouse confluent
+greenhouse starburst
+greenhouse cockroachlabs
+greenhouse clickhouse
+lever palantir
+lever plaid
+ashby openai
+ashby hex
+ashby census
+ashby hightouch
+ashby astronomer
+ashby posthog
+ashby supabase
+ashby modal
+ashby cohere
+ashby replit
+ashby linear
+ashby notion
+ashby deel
+
+# --- health, science and research ---
+greenhouse tempus
+greenhouse benchling
+greenhouse recursionpharmaceuticals
+greenhouse 23andme
+greenhouse color
+greenhouse oscar
+greenhouse zocdoc
+greenhouse flatironhealth
+greenhouse komodohealth
+greenhouse headway
+greenhouse springhealth
+greenhouse lyrahealth
+greenhouse cerebral
+greenhouse ginkgobioworks
+lever includedhealth
+lever veeva
+ashby ro
+ashby hims
+
+# --- consumer and marketplace tech ---
+greenhouse airbnb
+greenhouse stripe
+greenhouse robinhood
+greenhouse coinbase
+greenhouse dropbox
+greenhouse reddit
+greenhouse discord
+greenhouse duolingo
+greenhouse instacart
+greenhouse lyft
+greenhouse pinterest
+greenhouse twitch
+greenhouse figma
+greenhouse asana
+greenhouse cloudflare
+greenhouse samsara
+greenhouse squarespace
+greenhouse toast
+greenhouse affirm
+greenhouse chime
+greenhouse gusto
+greenhouse brex
+greenhouse carta
+greenhouse flexport
+greenhouse grammarly
+greenhouse nerdwallet
+greenhouse sofi
+greenhouse marqeta
+greenhouse upstart
+greenhouse betterment
+greenhouse wealthfront
+greenhouse thumbtack
+greenhouse webflow
+greenhouse calendly
+greenhouse postman
+greenhouse etsy
+greenhouse doordash
+greenhouse peloton
+greenhouse vimeo
+greenhouse yext
+lever eventbrite
+lever kraken
+lever attentive
+lever matchgroup
+lever whoop
+ashby vercel
+ashby retool

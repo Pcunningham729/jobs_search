@@ -1,0 +1,34 @@
+[project]
+name = "jobs-search"
+version = "0.1.0"
+description = "used to help someone find relevant jobs they might apply for"
+readme = "README.md"
+authors = [
+    { name = 'PC\paulc', email = "Pcunningham729@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=2.12.0",
+    "beautifulsoup4>=4.15.0",
+    "chromadb>=1.5.9",
+    "fastembed>=0.9.1",
+    "httpx>=0.28.1",
+    "langchain>=1.5.2",
+    "langchain-anthropic>=1.7.12",
+    "pydantic>=2.14.4",
+    "pypdf>=7.1.1",
+    "python-dotenv>=1.2.4",
+]
+
+[project.scripts]
+jobs-search = "jobs_search.main:main"
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]

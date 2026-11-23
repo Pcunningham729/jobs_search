@@ -1,0 +1,25 @@
+# FAKE profile with made-up data, used by the tests. It also shows the format.
+# Your real profile lives in profile/profile.toml at the repo root (not in git).
+# To start fresh: copy this whole folder to profile/ and edit it.
+
+titles = [
+    "data engineer",
+    "analytics engineer",
+]
+
+[[interests]]
+name = "pipelines"
+text = "Building reliable data pipelines and the tools that keep them running."
+
+[[interests]]
+name = "climate"
+text = "Work that helps with energy or climate, using data to measure impact."
+
+[[avoid]]
+text = "Roles with heavy on-call duty or mostly maintaining legacy reports."
+
+[filters]
+allow_remote = true
+locations = ["Twin Cities", "Minneapolis", "St. Paul", "Saint Paul"]
+min_salary = 100000
+keep_if_salary_missing = true
