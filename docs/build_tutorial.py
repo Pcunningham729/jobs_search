@@ -494,7 +494,7 @@ def part1() -> list:
         ["agent.py", c("ask()"), "your question + the conversation",
          "answer text + updated history", "main.py chat loop"],
         ["evaluation.py", c("evaluate()"), "your labels " + c("list[LabeledJob]"), c("EvalReport") + " (precision@10)",
-         "evals/rank_eval.py"],
+         "main.py (" + c("jobs-search eval") + ")"],
     ]  # fmt: skip
 
     return [
@@ -580,6 +580,18 @@ def part1() -> list:
                     "agent.py + tools.py in a loop",
                     "yes, every turn",
                     "a little per message",
+                ],
+                [
+                    c("jobs-search label"),
+                    "evaluation.pick_jobs_to_label() -> profile/labeled_jobs.csv",
+                    "no",
+                    "free",
+                ],
+                [
+                    c("jobs-search eval"),
+                    "evaluation.evaluate() on your labels -> precision@10",
+                    "no",
+                    "free",
                 ],
             ],
             [0.22, 0.52, 0.12, 0.14],
@@ -1207,9 +1219,9 @@ def part4() -> list:
         ]),
         ("main.py", "The command line: thin wiring, no logic of its own.", [
             [c("build_parser()"), "argparse commands and options (and the free " + c("--help") + ")"],
-            [c("run_discover / run_fetch / run_match / run_review / run_chat"), "open what each command needs and call the modules"],
+            [c("run_discover / run_fetch / run_match / run_review / run_chat / run_label / run_eval"), "open what each command needs and call the modules"],
         ]),
-        ("evaluation.py and evals/", "Measures ranking quality against your labels.", [
+        ("evaluation.py", "Measures ranking quality against your labels.", [
             [c("pick_jobs_to_label()"), "15 top-ranked + 15 random filter-passing jobs, shuffled"],
             [c("load_labels / write_label_sheet"), "the CSV you fill in with good / bad"],
             [c("evaluate(...)"), "scores labeled jobs ignoring filters -> " + c("EvalReport")],
@@ -1278,7 +1290,7 @@ uv run ruff check .      # style and common mistakes
             "<i>good for you</i>. You label 30 jobs good or bad in "
             + c("profile/labeled_jobs.csv")
             + "; "
-            + c("evals/rank_eval.py")
+            + c("jobs-search eval")
             + " ranks just those jobs and reports <b>precision@10</b>: "
             "the share of the top 10 you labeled good. Run it before and after any change to scoring, "
             "chunking, the embedding model or "
@@ -1287,9 +1299,9 @@ uv run ruff check .      # style and common mistakes
             "the number holds or rises."
         ),
         code("""
-uv run python evals/make_label_sheet.py     # once: writes the sheet
+uv run jobs-search label            # once: writes the sheet
 # ... label it ...
-uv run python evals/rank_eval.py "baseline" # precision@10, saved to history
+uv run jobs-search eval "baseline"   # precision@10, saved to history
 """),
         p(
             "Note that this eval measures the embedding ranking only. Claude's review and the agent "

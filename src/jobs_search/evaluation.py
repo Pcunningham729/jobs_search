@@ -12,9 +12,9 @@ Per CLAUDE.md: run the eval before AND after any change to scoring,
 chunking, the embedding model, the profile format or agent_prompts/, and
 compare the two numbers.
 
-The scripts in evals/ use this module:
-    uv run python evals/make_label_sheet.py   -> a sheet of jobs to label
-    uv run python evals/rank_eval.py          -> score the ranking
+main.py runs it with two commands:
+    uv run jobs-search label   -> a sheet of jobs to label
+    uv run jobs-search eval    -> score the ranking
 """
 
 import csv

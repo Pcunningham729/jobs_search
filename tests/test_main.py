@@ -73,3 +73,54 @@ def test_fetch_then_match(workspace, monkeypatch, capsys):
     out = capsys.readouterr().out
     assert "1 jobs, 1 new" in out
     assert "1. Data Engineer at acme" in out
+
+
+def test_label_then_eval(workspace, monkeypatch, capsys):
+    save_companies(workspace / "companies.csv", [Company(source="lever", slug="acme")])
+    jobs = []
+    for number in range(12):
+        jobs.append(
+            Job(
+                id=f"lever:acme:{number}",
+                source="lever",
+                company="acme",
+                title="Data Engineer" if number % 2 else "Sales Lead",
+                location="Remote (US)",
+                url=f"https://example.com/{number}",
+                description="Data pipelines." if number % 2 else "Sales calls.",
+            )
+        )
+    monkeypatch.setitem(FETCHERS, "lever", lambda slug: jobs)
+    cli.main(["fetch"])
+
+    cli.main(["eval"])  # no sheet yet
+    assert "Make one with: uv run jobs-search label" in capsys.readouterr().out
+
+    cli.main(["label"])
+    sheet = workspace / "profile" / "labeled_jobs.csv"
+    assert sheet.exists()
+
+    # Label every row: data jobs good, sales jobs bad.
+    lines = sheet.read_text(encoding="utf-8").splitlines()
+    labeled = [lines[0]]
+    for line in lines[1:]:
+        label = "good" if "Data Engineer" in line else "bad"
+        job_id, _, rest = line.split(",", 2)
+        labeled.append(f"{job_id},{label},{rest}")
+    sheet.write_text("\n".join(labeled) + "\n", encoding="utf-8")
+
+    cli.main(["eval", "first try"])
+    out = capsys.readouterr().out
+    assert "precision@10:" in out
+    assert "(first run)" in out
+    assert (workspace / "data" / "eval_history.csv").exists()
+
+
+def test_label_never_overwrites(workspace, capsys):
+    sheet = workspace / "profile" / "labeled_jobs.csv"
+    sheet.write_text("my labels", encoding="utf-8")
+
+    cli.main(["label"])
+
+    assert sheet.read_text(encoding="utf-8") == "my labels"
+    assert "already exists" in capsys.readouterr().out

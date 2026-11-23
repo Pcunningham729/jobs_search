@@ -17,3 +17,6 @@ __pycache__/
 # one in tests/fixtures/profile/ is still tracked.
 /profile/
 data/
+
+# Built from your own database and profile, so it's personal.
+docs/walkthrough.pdf

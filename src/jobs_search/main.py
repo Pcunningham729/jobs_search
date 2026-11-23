@@ -5,6 +5,8 @@
     uv run jobs-search match      your best matches (embeddings only, free)
     uv run jobs-search review     Claude reranks the best matches (costs a little)
     uv run jobs-search chat       talk to the job agent (costs a little)
+    uv run jobs-search label      make a sheet of jobs for you to label good/bad
+    uv run jobs-search eval       score the ranking against your labels
 
 Add --help to any of them to see its options, e.g. `uv run jobs-search match --help`.
 
@@ -23,6 +25,14 @@ from jobs_search.discovery import (
     seed_candidates,
 )
 from jobs_search.embeddings import embed_texts
+from jobs_search.evaluation import (
+    append_history,
+    evaluate,
+    last_precision,
+    load_labels,
+    pick_jobs_to_label,
+    write_label_sheet,
+)
 from jobs_search.matching import rank_jobs
 from jobs_search.pipeline import fetch_and_index
 from jobs_search.profile import load_profile, load_resumes, profile_dir
@@ -31,6 +41,8 @@ from jobs_search.store import connect, database_path
 from jobs_search.tools import format_match
 
 SEEDS_FILE = "company_seeds.txt"
+LABEL_SHEET = "labeled_jobs.csv"  # in profile/
+MIN_LABELS = 10  # fewer labels than this make precision@10 meaningless
 
 
 # ---------------------------------------------------------------------------
@@ -148,6 +160,91 @@ def run_chat(args: argparse.Namespace) -> None:
     chat_loop(build_agent(ctx))
 
 
+def run_label(args: argparse.Namespace) -> None:
+    """Write profile/labeled_jobs.csv: jobs for you to mark good or bad."""
+    sheet_path = profile_dir() / LABEL_SHEET
+    if sheet_path.exists():
+        # write_label_sheet() would refuse anyway; this message is friendlier.
+        print(f"{sheet_path} already exists, so your labels are safe.")
+        print("Rename or delete it first if you want a fresh sheet.")
+        return
+
+    conn = connect(database_path())
+    jobs = pick_jobs_to_label(
+        conn, open_index(chroma_path()), load_profile(profile_dir()), embed_texts
+    )
+    conn.close()
+    if not jobs:
+        print("No jobs found. Run `uv run jobs-search fetch` first.")
+        return
+
+    write_label_sheet(sheet_path, jobs)
+    print(f"Wrote {len(jobs)} jobs to {sheet_path}.")
+    print("Write good or bad in the `label` column, save, then run:")
+    print("    uv run jobs-search eval")
+
+
+def run_eval(args: argparse.Namespace) -> None:
+    """Score the ranking against your labels, and compare with the last run."""
+    labels_path = profile_dir() / LABEL_SHEET
+    history_path = database_path().parent / "eval_history.csv"
+    if not labels_path.exists():
+        print(f"No {labels_path}. Make one with: uv run jobs-search label")
+        return
+
+    labels = load_labels(labels_path)
+    good = sum(1 for item in labels if item.label == "good")
+    bad = len(labels) - good
+    if len(labels) < MIN_LABELS or good == 0 or bad == 0:
+        print(
+            f"Need at least {MIN_LABELS} labeled jobs, with some good AND some bad. "
+            f"So far: {good} good, {bad} bad. Label more rows in {labels_path}."
+        )
+        return
+
+    conn = connect(database_path())
+    report = evaluate(
+        conn,
+        open_index(chroma_path()),
+        load_profile(profile_dir()),
+        embed_texts,
+        labels,
+    )
+    conn.close()
+
+    previous = last_precision(history_path)
+    print(f"Labeled jobs scored: {report.good_count} good, {report.bad_count} bad")
+    if previous is None:
+        print(f"precision@10: {report.precision_at_10:.2f}  (first run)")
+    else:
+        change = report.precision_at_10 - previous
+        print(
+            f"precision@10: {report.precision_at_10:.2f}  "
+            f"(last run {previous:.2f}, change {change:+.2f})"
+        )
+        if change < 0:
+            print("  The number went DOWN. Consider undoing the last change.")
+
+    print("\nRanking of your labeled jobs (best score first):")
+    for position, item in enumerate(report.ranked, start=1):
+        hidden = "" if item.passes_filters else "   [filters would hide this]"
+        print(f"  {position:2}. {item.score:.3f}  {item.label:4}  {item.title}{hidden}")
+
+    if report.good_below_bad:
+        print("\nGood jobs ranked below bad ones (number of bad jobs above them):")
+        for title, count in report.good_below_bad.items():
+            print(f"  - {title}: {count}")
+    if report.good_filtered_out:
+        print(
+            "\nGood jobs your filters would drop:", ", ".join(report.good_filtered_out)
+        )
+    if report.missing_ids:
+        print("\nLabeled ids not in the store/index:", ", ".join(report.missing_ids))
+
+    append_history(history_path, report, args.note)
+    print(f"\nSaved this run to {history_path}")
+
+
 # ---------------------------------------------------------------------------
 # Reading the command line
 # ---------------------------------------------------------------------------
@@ -198,6 +295,16 @@ def build_parser() -> argparse.ArgumentParser:
 
     chat_cmd = commands.add_parser("chat", help="talk to the job agent")
     chat_cmd.set_defaults(run=run_chat)
+
+    label_cmd = commands.add_parser("label", help="make a sheet of jobs to label")
+    label_cmd.set_defaults(run=run_label)
+
+    eval_cmd = commands.add_parser("eval", help="score the ranking against your labels")
+    eval_cmd.add_argument(
+        "note", nargs="?", default="",
+        help='optional note saved with this run, e.g. "rewrote avoid item"',
+    )  # fmt: skip
+    eval_cmd.set_defaults(run=run_eval)
 
     return parser
 

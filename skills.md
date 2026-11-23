@@ -76,6 +76,6 @@ format or `agent_prompts/`, or when I ask how well ranking works.
 
 1. Check `profile/labeled_jobs.csv` has at least 10 rows with both good and bad labels. If not,
    explain how to label jobs and stop.
-2. Run `uv run python evals/rank_eval.py`.
+2. Run `uv run jobs-search eval`.
 3. Report precision@10 now vs. the last run, and any good jobs ranked below bad ones.
 4. If the number went down, say so plainly and suggest reverting before going on.
