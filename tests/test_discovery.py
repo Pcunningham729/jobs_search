@@ -31,6 +31,18 @@ def lever(slug: str) -> Company:
         ("https://boards.greenhouse.io/embed/job_board?for=gitlab",
          Company(source="greenhouse", slug="gitlab")),
         ("https://jobs.ashbyhq.com/ramp/abc", Company(source="ashby", slug="ramp")),
+        ("https://apply.workable.com/huggingface/j/19A136F8E2",
+         Company(source="workable", slug="huggingface")),
+        # Subdomain boards: the company is the start of the host.
+        ("https://bunq.recruitee.com/o/security-engineer",
+         Company(source="recruitee", slug="bunq")),
+        ("https://Ottonova.jobs.personio.de/job/2690964",
+         Company(source="personio", slug="ottonova")),  # lowercased
+        ("https://ottonova.jobs.personio.com/",
+         Company(source="personio", slug="ottonova")),
+        ("https://www.recruitee.com/pricing", None),  # the site itself
+        ("https://app.recruitee.com/login", None),  # the site's own page
+        ("https://a.b.recruitee.com/", None),  # "a.b" isn't a slug
         ("https://jobs.lever.co/", None),  # no company in the address
         ("https://jobs.lever.co/robots.txt", None),  # a page, not a company
         ("https://example.com/spotify", None),  # not a job board

@@ -263,7 +263,7 @@ def build_parser() -> argparse.ArgumentParser:
         "discover", help="find companies with job boards"
     )
     discover_cmd.add_argument(
-        "--crawl-pages", type=int, default=1,
+        "--crawl-pages", type=int, default=20,
         help="pages of Common Crawl results per board (more = more companies, slower)",
     )  # fmt: skip
     discover_cmd.add_argument(

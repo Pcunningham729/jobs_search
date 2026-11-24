@@ -7,6 +7,9 @@ lists every fetcher in one place.
 from jobs_search.fetchers.ashby import fetch_ashby
 from jobs_search.fetchers.greenhouse import fetch_greenhouse
 from jobs_search.fetchers.lever import fetch_lever
+from jobs_search.fetchers.personio import fetch_personio
+from jobs_search.fetchers.recruitee import fetch_recruitee
+from jobs_search.fetchers.workable import fetch_workable
 
 # Maps each board's name to its fetch function, so other code can look one up
 # by name. For example, FETCHERS["greenhouse"]("gitlab") fetches GitLab's jobs.
@@ -15,4 +18,7 @@ FETCHERS = {
     "greenhouse": fetch_greenhouse,
     "lever": fetch_lever,
     "ashby": fetch_ashby,
+    "workable": fetch_workable,
+    "recruitee": fetch_recruitee,
+    "personio": fetch_personio,
 }

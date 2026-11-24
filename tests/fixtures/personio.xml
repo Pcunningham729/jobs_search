@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workzag-jobs>
+
+<position>
+    <id>2888695</id>
+    <subcompany>ottonova Krankenversicherung AG - 9698</subcompany>
+    <office>München</office>
+    <additionalOffices>
+        <office>Köln</office>
+    </additionalOffices>
+    <department>Customer Support</department>
+    <recruitingCategory>Versicherung</recruitingCategory>
+    <name>(Junior) Customer Support Agent - private Krankenversicherung (m/w/d)</name>
+    <jobDescriptions></jobDescriptions>
+    <employmentType>permanent</employmentType>
+    <seniority>entry-level</seniority>
+    <schedule>full-time</schedule>
+    <occupation>call_center</occupation>
+    <occupationCategory>customer_support_and_client_care</occupationCategory>
+    <createdAt>2026-11-13T16:21:35+00:00</createdAt>
+</position>
+<position>
+    <id>2900536</id>
+    <subcompany>ottonova Krankenversicherung AG - 9698</subcompany>
+    <office>München</office>
+    <additionalOffices>
+        <office>Köln</office>
+    </additionalOffices>
+    <department>Underwriting</department>
+    <recruitingCategory>Versicherung</recruitingCategory>
+    <name>(Junior) Underwriting Manager (m/w/d) - medizinische Risikoprüfung PKV</name>
+    <jobDescriptions></jobDescriptions>
+    <employmentType>permanent</employmentType>
+    <seniority>entry-level</seniority>
+    <schedule>full-time</schedule>
+    <keywords>Underwriting,medizinische Risikoprüfung,Risikoprüfer,private Krankenversicherung,medizinisches Underwriting</keywords>
+    <occupation>data_entry</occupation>
+    <occupationCategory>administrative_and_clerical</occupationCategory>
+    <createdAt>2026-11-23T10:48:52+00:00</createdAt>
+</position>
+<position>
+    <id>2690964</id>
+    <subcompany>ottonova Technology Services GmbH - 9699</subcompany>
+    <office>München</office>
+    <department>Data &amp; Analytics</department>
+    <recruitingCategory>Technology</recruitingCategory>
+    <name>Senior AI Engineer – Architecture &amp; Platform (m/w/d)</name>
+    <jobDescriptions>
+        <jobDescription>
+            <name>YOUR TEAM</name>
+            <value>
+                <![CDATA[ottonova is Germany’s first digital private health insurance provider. We’re different: We’re dedicated to offering customers a modern, simple, and digital customer experience, while driving innovation in the insurance industry with our agile teams.<br> <br>As a digital company, data-driven processes have been at the core of our operations from the very beginning. Our automated systems generate a large volume of data every day, which is analyzed by our central Data &amp; Analytics unit and used for intelligent applications. The data sources for a digital insurance company are more diverse than in almost any other industry—ranging from customer chats and claims histories to sales and financial metrics.<br>Our Artificial Intelligence team is the newest division within Data &amp; Analytics—and has quickly demonstrated what’s possible with AI: Solutions such as automated email routing, intelligent document processing, and semi-automated chat support are already making a noticeable difference for our business units. Now we’re looking forward to expanding our team to make even more possible.]]>
+            </value>
+        </jobDescription>
+        <jobDescription>
+            <name>YOUR IMPACT</name>
+            <value>
+                <![CDATA[<strong>Your Focus: Implementing AI Use Cases<br></strong>Your main focus will be on the direct implementation of AI use cases:<ul><li>You’ll develop (generative) AI solutions from the initial idea through to production—including automated deployment. Your Goal: Optimizing processes and user experiences, e.g., through personalized customer interactions or by supporting our service agents in handling chats</li><li>You’ll develop and implement reliable validation and testing procedures to ensure the generalizability and reliability of AI models</li><li>You’ll continuously monitor and optimize the deployed models in terms of performance and efficiency</li><li>During implementation, you’ll work closely with product management, our full-stack engineers, and business units to seamlessly integrate AI solutions into our systems</li></ul><br><strong>Growing Responsibility: Solution Architecture &amp; Platform</strong><br>In addition, you’ll take on responsibility for the technical development of our AI platform—as you get to know the team and the systems:<ul><li>You’ll design the technical solution architecture for new AI use cases, identify critical dependencies early on, and validate technical assumptions—before implementation begins</li><li>You’ll provide technical guidance to the team and serve as a sounding board to discuss how we can meaningfully further develop our AI platform</li><li>You’ll help us establish technical standards, best practices, and reusable patterns—in a pragmatic way that suits the size of the team</li></ul><br><strong>Our Shared Commitment as a Team</strong><br>For all of us, this is an integral part of our role—and it will become part of your daily routine as well:<ul><li>Technology Scouting: You’ll analyze new AI trends and technologies and evaluate their potential for ottonova to drive targeted innovation</li><li>Knowledge sharing: You’ll ensure the success and effective use of the implemented AI solutions through documentation and knowledge-sharing sessions, and serve as a technical sparring partner for the team</li></ul>]]>
+            </value>
+        </jobDescription>
+        <jobDescription>
+            <name>YOUR SKILLSET</name>
+            <value>
+                <![CDATA[Your profile is based on a degree in Computer Science or a related technical, mathematical, or scientific field<ul><li>5+ years of experience in developing and deploying AI/ML solutions in enterprise environments, with a strong portfolio of successful use cases</li><li>In-depth knowledge of generative AI (LLMs, retrieval-augmented generation, agentic workflows, vector databases, embeddings) as well as traditional machine learning</li><li>Cloud &amp; MLOps expertise: Experience with cloud-based ML services (e.g., model hosting, serverless compute) and common MLOps tools (e.g., Docker, CI/CD pipelines). Experience with AWS is a major plus (Bedrock, Lambda, Fargate, EKS)</li><li>Architectural intuition honed through experience: You have not only implemented technical solutions for AI products but also helped design them—and you know what matters most for scalable, maintainable AI systems</li><li>Excellent problem-solving skills and the ability to quickly familiarize yourself with business processes and the perspectives of various stakeholders, understand their requirements, and derive technical concepts from them that you can communicate clearly and precisely—to both technical and non-technical audiences</li><li>Languages: Fluent in German (at least B2) and English</li></ul> <br><strong>Plus points</strong>, not required—if you don’t have experience in these areas yet, you can gain it with us:<ul><li>In-depth knowledge of platform engineering &amp; MLOps: Experience building or further developing ML/GenAI platforms, e.g., using managed ML platforms (AWS SageMaker), container orchestration (EKS, Kubernetes/Kubeflow), or a hybrid approach</li><li>Experience with Infrastructure-as-Code (e.g., Terraform)</li><li>Experience in the insurance or FinTech industry</li></ul>]]>
+            </value>
+        </jobDescription>
+        <jobDescription>
+            <name>WHAT YOU CAN EXPECT</name>
+            <value>
+                <![CDATA[<ul><li><strong>Creative Freedom: </strong>You’ll further develop our existing AI platform, professionalize the infrastructure, and design solutions for a wide variety of requirements—with full ownership.</li><li><strong>Technical Sparring Partner, rather than a Lone Wolf:</strong> You’ll provide the team with technical guidance and help shape the direction of our AI platform. Your input matters—especially when it comes to the major architectural questions we want to tackle together.</li><li><strong>Tangible impact:</strong> In a company with ~200 employees, you’ll see firsthand how your work transforms processes and creates value.</li><li><strong>Small, strong team: </strong>You’ll work closely with the AI Team Lead, a technically strong Product Manager, and two AI Engineers—short lines of communication, quick decisions.</li><li><strong>InsurTech innovation: </strong>We’re pioneers in an industry that’s just beginning to tap into the full potential of AI.</li></ul><br><br><span style="color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);display:inline;">At ottonova you have the opportunity to actively shape one of the most exciting new companies on the market. Here you can expect an experienced, highly motivated and colorful team and the freedom to contribute and pursue your own ideas. </span><br style="border:0px solid;margin:0px;color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);"><br style="border:0px solid;margin:0px;color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);"><span style="color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);display:inline;">As a health insurance company, we are committed to health – also for our employees. Since fruits, coffee and cereals are already part of our equipment, we offer you a variety of other benefits: </span><br style="border:0px solid;margin:0px;color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);"><ul style="border:0px solid;color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);"><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Sports &amp; fitness subsidy</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Company health insurance</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Company pension plan</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Travel subsidy</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Corporate Benefits</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Trainings and courses</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">ottonova Balance – Mobile working</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">30 days vacation, plus December 24th &amp; 31st off</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">ottobike – Bike-Leasing</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Ticket Plus City Card</span></span></li><li style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;"><span style="border:0px solid;margin:0px;">Employees-recruit-employees</span></span></li></ul><span style="color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);display:inline;"> </span><br style="border:0px solid;margin:0px;color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);"><span style="color:rgb(31,31,31);font-family:Inter, '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Open Sans', 'system-ui', '-apple-system', 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';font-size:14px;font-style:normal;font-weight:400;text-transform:none;background-color:rgb(255,255,255);display:inline;">ottonova drives a mutually responsible, respectful and humorous interaction with a clear value system. Our diversity is a strength because it makes us more creative and productive. We value every individual and are fully committed to supporting their personal and professional development.</span>]]>
+            </value>
+        </jobDescription>
+        <jobDescription>
+            <name>Did we spark your interest?</name>
+            <value>
+                <![CDATA[If you’re passionate about AI and want to make a significant impact in the InsurTech industry as a technical leader, then we’re the perfect fit for you. Apply now!<br><br>Location: Munich<br>Start Date: Available as of October 1, 2026<br>Employment: Full-time, permanent]]>
+            </value>
+        </jobDescription>
+        <jobDescription>
+            <name>URL</name>
+            <value>
+                <![CDATA[ai-engineering]]>
+            </value>
+        </jobDescription>
+    </jobDescriptions>
+    <employmentType>permanent</employmentType>
+    <seniority>experienced</seniority>
+    <schedule>full-time</schedule>
+    <occupation>general_and_other_engineering</occupation>
+    <occupationCategory>engineering</occupationCategory>
+    <createdAt>2026-06-29T15:20:46+00:00</createdAt>
+</position>
+</workzag-jobs>

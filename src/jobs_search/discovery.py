@@ -1,4 +1,4 @@
-"""Find companies that post jobs on Greenhouse, Lever or Ashby, automatically.
+"""Find companies that post jobs on the supported job boards, automatically.
 
 The job-board APIs can't "search all jobs". They only answer "what jobs does
 THIS company have?", so the program needs company names. In these APIs a
@@ -40,13 +40,28 @@ BOARD_ADDRESSES: dict[str, Source] = {
     "job-boards.greenhouse.io": "greenhouse",
     "jobs.lever.co": "lever",
     "jobs.ashbyhq.com": "ashby",
+    "apply.workable.com": "workable",
 }
+
+# Some boards put the company in the SUBDOMAIN (the part before the main site
+# name) instead of the path: "bunq.recruitee.com", not "recruitee.com/bunq".
+SUBDOMAIN_BOARDS: dict[str, Source] = {
+    "recruitee.com": "recruitee",
+    "jobs.personio.de": "personio",
+    "jobs.personio.com": "personio",
+}
+
+# Subdomains of those sites that are the board's own pages, not companies.
+NOT_COMPANY_SUBDOMAINS = {"www", "api", "app", "blog", "help", "support", "status"}
 
 # The API address that answers for one company, per board. Same as the fetchers.
 CHECK_URLS: dict[str, str] = {
     "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{slug}/jobs",
     "lever": "https://api.lever.co/v0/postings/{slug}?mode=json&limit=1",
     "ashby": "https://api.ashbyhq.com/posting-api/job-board/{slug}",
+    "workable": "https://apply.workable.com/api/v1/widget/accounts/{slug}",
+    "recruitee": "https://{slug}.recruitee.com/api/offers/",
+    "personio": "https://{slug}.jobs.personio.de/xml",
 }
 
 # First parts of board addresses that are pages, not companies.
@@ -130,9 +145,23 @@ def company_from_url(url: str) -> Company | None:
     Company(source='lever', slug='spotify')
     >>> company_from_url("https://boards.greenhouse.io/embed/job_board?for=gitlab")
     Company(source='greenhouse', slug='gitlab')
+    >>> company_from_url("https://bunq.recruitee.com/o/security-engineer")
+    Company(source='recruitee', slug='bunq')
     """
     parts = urlparse(url)  # splits a URL into host, path, query, ...
-    source = BOARD_ADDRESSES.get(parts.netloc.lower().removeprefix("www."))
+    host = parts.netloc.lower().removeprefix("www.")
+
+    # Subdomain boards: the slug is the start of the host, "bunq.recruitee.com" -> "bunq".
+    for domain, subdomain_source in SUBDOMAIN_BOARDS.items():
+        if host.endswith("." + domain):
+            slug = host.removesuffix("." + domain)
+            # "a.b.recruitee.com" would leave "a.b": not a slug, so it's dropped.
+            if slug in NOT_COMPANY_SUBDOMAINS or not looks_like_slug(slug):
+                return None
+            return Company(source=subdomain_source, slug=slug)
+
+    # Path boards: the host must be one we know.
+    source = BOARD_ADDRESSES.get(host)
     if source is None:
         return None
 
@@ -177,10 +206,18 @@ def common_crawl_candidates(pages: int = 1) -> set[Company]:
         print(f"  Common Crawl isn't answering ({type(error).__name__}); skipping it.")
         return found
 
+    # The address patterns to ask for. "jobs.lever.co/*" means every page under
+    # jobs.lever.co, and "*.recruitee.com" means every subdomain of recruitee.com.
+    patterns = []
     for address in BOARD_ADDRESSES:
+        patterns.append(f"{address}/*")
+    for domain in SUBDOMAIN_BOARDS:
+        patterns.append(f"*.{domain}")
+
+    for pattern in patterns:
         for page in range(pages):
             params = {
-                "url": f"{address}/*",
+                "url": pattern,
                 "output": "json",
                 "fl": "url",
                 "page": page,
@@ -190,9 +227,9 @@ def common_crawl_candidates(pages: int = 1) -> set[Company]:
                 response.raise_for_status()
             except httpx.HTTPError as error:
                 print(
-                    f"  Common Crawl: no answer for {address} ({type(error).__name__})."
+                    f"  Common Crawl: no answer for {pattern} ({type(error).__name__})."
                 )
-                break  # move on to the next address
+                break  # move on to the next pattern
             found |= parse_index_lines(response.text)  # |= adds to the set
     return found
 

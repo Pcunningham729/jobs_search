@@ -123,3 +123,10 @@ lever matchgroup
 lever whoop
 ashby vercel
 ashby retool
+
+# --- Workable, Recruitee and Personio (checked against their APIs) ---
+workable huggingface
+recruitee bunq
+recruitee channable
+personio ottonova
+personio 1komma5grad

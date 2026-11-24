@@ -20,7 +20,7 @@ from pydantic import BaseModel
 # The job boards we support. Giving this a name means we can reuse it in other
 # modules (e.g. `from jobs_search.models import Source`) instead of retyping
 # the list. To support a new board later, add its name here.
-Source = Literal["greenhouse", "lever", "ashby"]
+Source = Literal["greenhouse", "lever", "ashby", "workable", "recruitee", "personio"]
 
 
 class Job(BaseModel):
@@ -36,8 +36,8 @@ class Job(BaseModel):
     # same job is never saved twice.
     id: str
 
-    # Which job board this came from. Because of `Source` above, only
-    # "greenhouse", "lever" or "ashby" are accepted.
+    # Which job board this came from. Because of `Source` above, only the
+    # boards listed there (like "greenhouse" or "lever") are accepted.
     source: Source
 
     # The company's name as the job board knows it, for example "acme".
